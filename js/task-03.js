@@ -12,3 +12,25 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+// Используй массив объектов images для создания элементов <img> вложенных в <li>. Для создания разметки используй шаблонные строки и метод insertAdjacentHTML().
+
+// Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+// Добавь минимальное оформление галереи флексбоксами или гридами через CSS классы.
+
+const gallery = document.querySelector('.gallery');
+
+gallery.style.display = 'flex';
+gallery.style.listStyle = 'none';
+gallery.style.flexWrap = 'wrap';
+gallery.style.gap = '50px';
+
+const makeItemImg = (images, gallery) => {
+  const makeStringAtr = images.map(({ url, alt }) => {
+    const string = `<li><img class ="gallery__img" src="${url}" alt="${alt}" width = "630px" height = "375px"></li>`;
+    return string;
+  })
+  gallery.insertAdjacentHTML('beforeend', makeStringAtr.join(' '));
+}
+
+makeItemImg(images, gallery);
